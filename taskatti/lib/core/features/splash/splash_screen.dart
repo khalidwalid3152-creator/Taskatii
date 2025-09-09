@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:taskatti/core/constants/Appimages.dart';
+import 'package:taskatti/core/features/home/page/home.dart';
 import 'package:taskatti/core/features/upload/upload_screen.dart';
+import 'package:taskatti/core/services/data_helper.dart';
 import 'package:taskatti/core/utils/colors.dart';
 import 'package:lottie/lottie.dart';
 import 'package:taskatti/core/utils/styles.dart';
@@ -16,8 +18,20 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
+    bool isupload = DataHelper.getdata('isupload') ?? false;
     Future.delayed(Duration(seconds: 3), () {
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>UploadScreen()));
+      if(isupload){
+        Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => Home()),
+      );
+      }else{
+              Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => UploadScreen()),
+      );
+      }
+
     });
   }
 

@@ -20,7 +20,8 @@ class mainButton extends StatelessWidget {
       onPressed: ontap,
       child: Text(
         text,
-        style: TextStyles.titleStyle(
+        style: TextStyles.bodyStyle(
+          fontSize: 15,
           color: Appcolors.whiteColor,
           fontWeight: FontWeight.w500,
         ),

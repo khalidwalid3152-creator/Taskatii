@@ -2,9 +2,12 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+
 import 'package:image_picker/image_picker.dart';
 import 'package:taskatti/core/constants/Appimages.dart';
+import 'package:taskatti/core/features/home/page/home.dart';
 import 'package:taskatti/core/functions/showErrorDailog.dart';
+import 'package:taskatti/core/services/data_helper.dart';
 import 'package:taskatti/core/utils/colors.dart';
 import 'package:taskatti/core/utils/styles.dart';
 import 'package:taskatti/core/widgets/custom_text_feild.dart';
@@ -29,15 +32,18 @@ class _UploadScreenState extends State<UploadScreen> {
           TextButton(
             onPressed: () {
               if (path.isNotEmpty && namecontroller.text.isNotEmpty) {
-                
+                DataHelper.putuserdata(namecontroller.text, path);
+
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => Home()),
+                );
               } else if (path.isEmpty && namecontroller.text.isNotEmpty) {
-                showErorrDailog(context,' upload image');
-                
+                showErorrDailog(context, ' upload image');
               } else if (path.isNotEmpty && namecontroller.text.isEmpty) {
-                showErorrDailog(context,'enter your name');
-                
+                showErorrDailog(context, 'enter your name');
               } else {
-                showErorrDailog(context,'enter your name \n upload image');
+                showErorrDailog(context, 'enter your name \n upload image');
               }
             },
             child: Text(
@@ -81,6 +87,7 @@ class _UploadScreenState extends State<UploadScreen> {
                 Divider(),
                 Gap(20),
                 CustomTextFeild(
+                  maxlines: 1,
                   hint: 'Enter your name',
                   controller: namecontroller,
                 ),
@@ -91,8 +98,6 @@ class _UploadScreenState extends State<UploadScreen> {
       ),
     );
   }
-
-
 
   Future<void> upload_image({required bool iscamera}) async {
     XFile? file = await ImagePicker().pickImage(
