@@ -38,7 +38,7 @@ class MainApp extends StatelessWidget {
           ),
         ),
 
-        scaffoldBackgroundColor: Appcolors.whiteColor,
+        scaffoldBackgroundColor:  Appcolors.whiteColor,
         fontFamily: Appfonts.popenfont,
         appBarTheme: AppBarTheme(
           surfaceTintColor: Colors.transparent,
@@ -51,3 +51,5 @@ class MainApp extends StatelessWidget {
     );
   }
 }
+
+

@@ -33,7 +33,6 @@ class _UploadScreenState extends State<UploadScreen> {
             onPressed: () {
               if (path.isNotEmpty && namecontroller.text.isNotEmpty) {
                 DataHelper.putuserdata(namecontroller.text, path);
-
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(builder: (context) => Home()),
@@ -65,7 +64,7 @@ class _UploadScreenState extends State<UploadScreen> {
                 CircleAvatar(
                   radius: 80,
                   backgroundColor: Appcolors.primaryColor,
-                  backgroundImage: path.isNotEmpty
+                     backgroundImage: path.isNotEmpty
                       ? FileImage(File(path))
                       : AssetImage(Appimages.emptyUser),
                 ),
